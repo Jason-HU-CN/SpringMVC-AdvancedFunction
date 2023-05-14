@@ -1,7 +1,11 @@
 package com.demo.controller;
 
+import com.demo.pojo.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -26,5 +30,21 @@ public class UserController {
     /*
      * 用户登录
      * */
+    @RequestMapping("/login")
+    public String login(User user, Model model, HttpSession session) {
+        //获取用户名和密码
+        String username = user.getUsername();
+        String password = user.getPassword();
+        //此处模拟从数据库中获取用户名和密码后进行判断
+        if (username != null && username.equals("jason") && password != null && password.equals("666")){
+            //将用户对象添加到Session
+            session.setAttribute("USER_SESSION",user);
+            //用户登录成功，转发到系统首页
+            return "main";
+        }
+        //如果用户名和密码不匹配，转发到登录页面，并进行提醒
+        model.addAttribute("msg","用户名或密码错误，请重新登录！");
+        return "login";
+    }
 
 }
