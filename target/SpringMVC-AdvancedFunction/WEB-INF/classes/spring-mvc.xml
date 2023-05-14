@@ -26,6 +26,9 @@
     </bean>
     <!--配置拦截器-->
     <mvc:interceptors>
-        <bean class="com.demo.intercepto.MyInterceptor"/>
+        <!--拦截器1-->
+        <bean class="com.demo.interceptor.MyInterceptor"/>
+        <!--拦截器2-->
+        <bean class="com.demo.interceptor.MyInterceptor2"/>
     </mvc:interceptors>
 </beans>
