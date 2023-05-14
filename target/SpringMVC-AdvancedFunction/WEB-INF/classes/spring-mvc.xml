@@ -24,4 +24,8 @@
         <!--value定义在异常处理页面中获取异常信息的变量名，默认名为exception-->
         <property name="exceptionAttribute" value="exp"></property>
     </bean>
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <bean class="com.demo.intercepto.MyInterceptor"/>
+    </mvc:interceptors>
 </beans>
